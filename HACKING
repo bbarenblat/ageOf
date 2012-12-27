@@ -1,0 +1,27 @@
+			      ageOf architecture
+
+ageOf determines somebody's age by querying one or more sources on the
+Internet.  Since there are hundreds of different sites that catalogue the ages
+of famous (and not-so-famous) people, ageOf uses a plugin-based architecture.
+Each source gets its own plugin, and then ageOf queries each source in turn.
+The first source that gives back an age wins.
+
+The Haskell idiom to do a plugin-based architecture is to define a plugin data
+type, and that's what I've done here.  The 'RequestMethod' type represents a
+plugin--a single function that takes the name of a person and returns
+(depending on which constructor you use) his/her age or date of birth.  To
+define a new plugin, you thus need to create a new module which exports a
+'RequestMethod' type.
+
+There are currently two plugins packaged with ageOf (though that may change in
+the future).  One is a sample plugin--it knows when Simon Peyton Jones (the
+author of Haskell) was born, and that's it; use it as a skeleton for writing
+your own plugins.  The second plugin is a real, nontrivial plugin that uses
+DBpedia (the Semantic Web mirror of Wikipedia) to determine the age of anybody
+whose age is stored on Wikipedia.
+
+
+Local Variables:
+mode: text
+fill-column: 79
+End:

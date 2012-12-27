@@ -1,0 +1,8 @@
+# .gitignore for ageOf                                             -*- conf -*-
+
+# Editor backup files
+*~
+
+# cabal-dev files
+cabal-dev/
+dist/
